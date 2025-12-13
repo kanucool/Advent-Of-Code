@@ -5,19 +5,12 @@ using Point = pair<lint, lint>;
 using Line = pair<Point, Point>;
 using Rect = pair<Point, Point>;
 
-/*
- * The approach utilizes Green's Theorem to
- * identify the outer border of the polygon.
- * It then tests each rectangle, verifying
- * validity if it does not intersect with
- * the outer border.
- */
 
 bool isHorizontal(Line& line) {
     return line.first.second == line.second.second;
 }
 
-
+// Green's Theorem --> Signed Area Formula
 bool isClockwise(vector<Line>& lines) {
     lint total = 0;
     for (Line& line : lines) {
@@ -50,7 +43,6 @@ int main() {
     }
 
     bool clockwise = isClockwise(lines);
-
     vector<Line> borders;
 
     for (Line& line : lines) {
